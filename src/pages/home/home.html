@@ -1,18 +1,54 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content style="text-align:center;" padding>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Car No:</ion-label>
+      <ion-input [(ngModel)]="searchTerm" type="text" name="searchterm"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button="" (click)="getUserData()">Get User</button>
+  <ion-card style="text-align:left;">
+    <ion-card-header>
+      User Information
+    </ion-card-header>
+    <ion-card-content>
+      <section>
+        <p><b>Car No:</b> {{userData['car_no']}}</p>
+        <p><b>Name:</b> {{userData.name}}</p>
+        <p><b>Contact:</b> {{userData.contact}}</p>
+      </section>
+    </ion-card-content>
+  </ion-card>
+  <ion-card style="text-align:left;">
+    <ion-card-header>
+      Add Data
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Car No:</ion-label>
+          <ion-input [(ngModel)]="postData.car_no" type="text" name="post_user_car_no"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Name:</ion-label>
+          <ion-input [(ngModel)]="postData.name"  maxlength="20" type="text" name="post_user_name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Contact No:</ion-label>
+          <ion-input [(ngModel)]="postData.contact" maxlength="10" type="text" name="post_user_contact"></ion-input>
+        </ion-item>
+      </ion-list>
+      </form>
+      <section style="text-align: center">
+        <button ion-button (click)="addUser()">Add User</button>
+      </section>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
